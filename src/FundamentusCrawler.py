@@ -11,12 +11,23 @@ class FundamentusCrawler:
     self.url = url+prefix    
 
   def getPaper(self, ticker):
+    paper = {}
     self.chrome.get(self.url+"?papel="+ticker.upper())
     tabelas = self.chrome.find_elements_by_xpath("//table[@class='w728']")
     
+    #dados gerais - tabela 1
+
     # valores - tabela 2    
-    paper = {}
     paper["values"] = self.__getValues(tabelas[1])
+
+    # oscilações/ indicadores - tabela 3
+
+    # dados balanco pratimonial - tabela 4
+
+    # dados demonstrativo de resultado - tabela 5
+
+
+
     self.lastPaper = paper
     self.__close()
     return paper    
